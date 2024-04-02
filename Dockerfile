@@ -50,6 +50,13 @@ RUN apt-get update && \
         python3-xlrd \
         python3-xlwt \
         python3-wheel \
+        build-essential \
+        autoconf \
+        libtool \
+        pkg-config \
+        python3-dev \
+        libldap2-dev \
+        libsas12-dev \
         xz-utils && \
     if [ -z "${TARGETARCH}" ]; then \
         TARGETARCH="$(dpkg --print-architecture)"; \
@@ -92,6 +99,19 @@ RUN npm install -g rtlcss
 #    && apt-get -y install --no-install-recommends ./odoo.deb \
 #    && rm -rf /var/lib/apt/lists/* odoo.deb
 
+COPY ./addons /opt/odoo/addons
+COPY ./debian /opt/odoo/debian
+COPY ./doc /opt/odoo/doc
+COPY ./odoo /opt/odoo/odoo
+COPY ./setup /opt/odoo/setup
+COPY ./.tx /opt/odoo/.tx
+
+RUN useradd -m odoo && echo odoo:odoo | chpasswd
+
+RUN pip3 install wheel psycopg2-binary
+RUN pip3 install -r /opt/odoo/requirements.txt
+
+RUN cp /opt/odoo/setup/odoo /opt/odoo/odoo-bin && chmod +x /opt/odoo/odoo-bin
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
 COPY ./odoo.conf /etc/odoo/
@@ -100,6 +120,8 @@ COPY ./odoo.conf /etc/odoo/
 RUN chown odoo /etc/odoo/odoo.conf \
     && mkdir -p /mnt/extra-addons \
     && chown -R odoo /mnt/extra-addons
+    && mkdir -p /var/lib/odoo
+    && chown -R odoo /var/lib/odoo
 VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
 
 # Expose Odoo services
