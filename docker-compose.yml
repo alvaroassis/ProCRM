@@ -10,25 +10,16 @@ services:
       - procrm-data:/var/lib/odoo
       - ./config:/etc/odoo
       - ./extra-addons:/mnt/extra-addons
-    environment:
-      - PASSWORD_FILE=/run/secrets/postgresql_password
-    secrets:
-      - postgresql_password
-  db:
+   db:
     image: postgres:15
     environment:
       - POSTGRES_DB=procrmdb
-      - POSTGRES_PASSWORD_FILE=/run/secrets/postgresql_password
+      - POSTGRES_PASSWORD=procrm
       - POSTGRES_USER=procrm
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - procrm-db-data:/var/lib/postgresql/data/pgdata
-    secrets:
-      - postgresql_password
 volumes:
   procrm-data:
   procrm-db-data:
 
-secrets:
-  postgresql_password:
-    file: odoo_pg_pass
