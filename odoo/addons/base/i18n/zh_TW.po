@@ -7989,7 +7989,7 @@ msgid ""
 "Shorten URLs and use them to track clicks and UTMs\n"
 msgstr ""
 "\n"
-"縮短 URL 並使用它們來追踪點擊次數和整合式威脅管理 \n"
+"縮短網址並使用它們追蹤點擊及 UTM\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_google_map
@@ -29671,7 +29671,7 @@ msgstr "銷售點餐廳預約"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_settle_due
 msgid "Point of Sale Settle Due"
-msgstr "POS營業點結清到期"
+msgstr "營業點清繳到期款項"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_enterprise
@@ -31313,12 +31313,12 @@ msgstr "重置檢視"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.reset_view_arch_wizard_view
 msgid "Reset View Architecture"
-msgstr "重置檢視架構"
+msgstr "重設檢視畫面架構"
 
 #. module: base
 #: model:ir.model,name:base.model_reset_view_arch_wizard
 msgid "Reset View Architecture Wizard"
-msgstr "重置檢視架構引導"
+msgstr "重設檢視畫面架構精靈"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__reset_view_arch_wizard__reset_mode__other_view
@@ -32083,6 +32083,12 @@ msgid "Scheduled Actions Triggers"
 msgstr "安排的動觸發"
 
 #. module: base
+#: code:addons/base/models/ir_cron.py:0
+#, python-format
+msgid "Scheduled action disabled"
+msgstr "排定的操作已停用"
+
+#. module: base
 #: model:ir.model.fields,field_description:base.field_ir_cron__user_id
 msgid "Scheduler User"
 msgstr "調度程式使用者"
@@ -32638,7 +32644,7 @@ msgstr "設定"
 #. module: base
 #: model:ir.module.module,summary:base.module_pos_settle_due
 msgid "Settle partner's due in the POS UI."
-msgstr "在POS UI 中結算合伙人的到期應付款項。"
+msgstr "在 POS 程式操作介面中，向合作夥伴清繳到期款項。"
 
 #. module: base
 #: model:res.country,name:base.sc
@@ -35602,6 +35608,14 @@ msgid "Those modules cannot be uninstalled: %s"
 msgstr "這些模塊無法卸載：%s"
 
 #. module: base
+#: code:addons/base/models/ir_cron.py:0
+#, python-format
+msgid ""
+"This scheduled action has been disabled because its interval number is not a"
+" strictly positive value."
+msgstr "此排定操作已停用，因為其間隔數目不是嚴格的正數值。"
+
+#. module: base
 #: model:ir.model.fields,field_description:base.field_res_lang__thousands_sep
 msgid "Thousands Separator"
 msgstr "千位分隔符"
@@ -36182,7 +36196,7 @@ msgstr "UTM 追蹤器"
 #. module: base
 #: model:ir.module.module,description:base.module_mass_mailing_crm
 msgid "UTM and mass mailing on lead / opportunities"
-msgstr "批次郵寄潛在商機/商機"
+msgstr "潛在客戶/銷售機會 UTM 及群發郵件"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mass_mailing_sale
@@ -38073,6 +38087,15 @@ msgstr ""
 #, python-format
 msgid "You cannot delete the %s record."
 msgstr "不能刪除 %s 記錄。"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+#, python-format
+msgid ""
+"You cannot delete the admin user because it is utilized in various places "
+"(such as security configurations,...). Instead, archive it."
+msgstr ""
 
 #. module: base
 #. odoo-python
