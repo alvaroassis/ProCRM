@@ -1,6 +1,6 @@
 # ProCRM
 
-Este projeto visa ser um fork do projeto da Plataforma ERP Odoo (https://github.com/odoo/odoo) customizado para atender as necessidades internas de CRM da Companhia de Tecnologia da Informação do Estado de Minas Gerais - Prodemge (www.prodemge.gov.br).
+Este projeto visa ser um fork do projeto da Plataforma ERP Odoo (https://github.com/odoo/odoo) customizado para atender as necessidades internas de CRM da Companhia de Tecnologia da Informação do Estado de Minas Gerais - Prodemge (www.prodemge.gov.br). Mais informações sobre o Odoo no final deste documento.
 
 Instalação do Ambiente
 ----------------------
@@ -83,8 +83,6 @@ docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v /va
 ----
 
 Odoo is a suite of web based open source business apps.
-
-Este fork pretende customizar o Odoo para uso como CRM na Prodemge.
 
 The main Odoo Apps include an <a href="https://www.odoo.com/page/crm">Open Source CRM</a>,
 <a href="https://www.odoo.com/app/website">Website Builder</a>,
