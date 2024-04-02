@@ -77,7 +77,19 @@ $ docker run -d -v odoo-db:/var/lib/postgresql/data -e POSTGRES_USER=procrm -e P
 
 Copiando o repositório do ProCRM para o Servidor do Docker:
 --------------------
+1. Dentro da pasta de destino no Servidor Docker, utilize o comando abaixo para baixa uma cópia do repositório do ProCRM:
 
+```
+$ git clone https://github.com/alvaroassis/ProCRM.git
+```
+
+Executando o container de aplicação do ProCRM:
+------------
+1. Utilize o comando abaixo para subir o container passando o volume onde serão armazenados os dados da aplicação:
+
+```
+$ docker run -d -v procrm-data:/var/lib/odoo --link db:db prodemge/procrm:1.0
+```
 
 
 -------------------------------------------------
