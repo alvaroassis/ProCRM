@@ -105,6 +105,7 @@ COPY ./doc /opt/odoo/doc
 COPY ./odoo /opt/odoo/odoo
 COPY ./setup /opt/odoo/setup
 COPY ./.tx /opt/odoo/.tx
+COPY ./requirements.txt /opt/odoo
 
 RUN useradd -m odoo && echo odoo:odoo | chpasswd
 
