@@ -56,7 +56,7 @@ RUN apt-get update && \
         pkg-config \
         python3-dev \
         libldap2-dev \
-        libsas12-dev \
+        libsasl2-dev \
         xz-utils && \
     if [ -z "${TARGETARCH}" ]; then \
         TARGETARCH="$(dpkg --print-architecture)"; \
