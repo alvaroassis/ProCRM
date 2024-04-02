@@ -72,7 +72,7 @@ Iniciando o Docker do Servidor do PostgreSQL:
 
 1. Utilize o comando abaixo para iniciar fazer o deploy do docker do banco de dados postgreSQL:
 ```
-$ docker run -d -v odoo-db:/var/lib/postgresql/data -e POSTGRES_USER=procrm -e POSTGRES_PASSWORD=procrm -e POSTGRES_DB=procrmdb --name db postgres:16.2
+$ docker run -d -v odoo-db:/var/lib/postgresql/data -e POSTGRES_USER=procrm -e POSTGRES_PASSWORD=procrm -e POSTGRES_DB=procrmdb --name db postgres:15
 ```
 
 Copiando o repositório do ProCRM para o Servidor do Docker:
