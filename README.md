@@ -67,12 +67,24 @@ docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v /va
 
    Acesse pelo navegador a interface `http://localhost:9000` e cadastre o usuário de administração do Portainer.
 
-Iniciando o Docker do Servidor do PostgreSQL:
------------------
+Instalando o Docker-Compose:
+---------------
+1. baixando o docker-compose:
 
-1. Utilize o comando abaixo para iniciar fazer o deploy do docker do banco de dados postgreSQL:
 ```
-$ docker run -d -v odoo-db:/var/lib/postgresql/data -e POSTGRES_USER=procrm -e POSTGRES_PASSWORD=procrm -e POSTGRES_DB=procrmdb --name db postgres:15
+$ curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+```
+
+2. Alterando permissão de execução para o comando:
+
+```
+$ chmod +x /usr/local/bin/docker-compose
+```
+
+3. Criando link simbólico para o comando:
+
+```
+$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
 Copiando o repositório do ProCRM para o Servidor do Docker:
@@ -83,6 +95,29 @@ Copiando o repositório do ProCRM para o Servidor do Docker:
 $ git clone https://github.com/alvaroassis/ProCRM.git
 ```
 
+Criando o build da imagem do ProCRM:
+----------------------------
+1. Dentro da pasta do projeto, onde está o arquivo Dockerfile, execute o seguinte comando:
+```
+$ docker build -t prodemge/procrm:1.0
+```
+
+Executando os containers através do docker-compose:
+--------------------
+1. Na pasta onde está o arquivo docker-compose.yml, execute o seguinte comando:
+
+```
+$ docker-compose up -d
+```
+
+Iniciando o Docker do Servidor do PostgreSQL:
+-----------------
+
+1. Utilize o comando abaixo para iniciar fazer o deploy do docker do banco de dados postgreSQL:
+```
+$ docker run -d -v procrm-db-data:/var/lib/postgresql/data -e POSTGRES_USER=procrm -e POSTGRES_PASSWORD=procrm -e POSTGRES_DB=procrmdb --name db postgres:15
+```
+
 Executando o container de aplicação do ProCRM:
 ------------
 1. Utilize o comando abaixo para subir o container passando o volume onde serão armazenados os dados da aplicação:
@@ -90,8 +125,6 @@ Executando o container de aplicação do ProCRM:
 ```
 $ docker run -d -v procrm-data:/var/lib/odoo --link db:db prodemge/procrm:1.0
 ```
-
-
 -------------------------------------------------
 [![Build Status](https://runbot.odoo.com/runbot/badge/flat/1/master.svg)](https://runbot.odoo.com/runbot)
 [![Tech Doc](https://img.shields.io/badge/master-docs-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/documentation/17.0)
