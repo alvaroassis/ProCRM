@@ -110,7 +110,7 @@ Criando o build da imagem do ProCRM:
 ----------------------------
 1. Dentro da pasta do projeto, onde está o arquivo Dockerfile, execute o seguinte comando:
 ```
-sudo docker build -t prodemge/procrm:1.0
+sudo docker build -t prodemge/procrm:1.0 .
 ```
 
 Executando os containers através do docker-compose:
