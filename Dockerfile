@@ -137,9 +137,10 @@ EXPOSE 8069 8071 8072
 # Set the default config file
 ENV ODOO_RC /etc/odoo/odoo.conf
 
-COPY wait-for-psql.py /wait-for-psql.py
-RUN chown -R odoo /wait-for-psql.py \
-    && chmod +x /wait-for-psql.py
+COPY wait-for-psql.py /usr/local/bin/wait-for-psql.py
+RUN chown -R odoo /usr/local/bin/wait-for-psql.py \
+    && chmod +x /usr/local/bin/wait-for-psql.py \
+    && ln -s /usr/local/bin/wait-for-psql.py /usr/bin/wait-for-psql.py
 
 RUN pip3 install simplejson
 
