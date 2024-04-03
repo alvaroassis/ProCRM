@@ -10,7 +10,6 @@ ENV LANG pt_BR.UTF-8
 RUN \
   apt-get clean && \
   apt-get update && \
-  apt-get upgrade -y && \
   apt-get install -y locales tzdata && \
   rm -rf /var/lib/apt/lists/* && \
   ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && \
@@ -35,7 +34,6 @@ RUN apt-get update && \
         libssl-dev \
         node-less \
         npm \
-        python3-cffi \
         python3-magic \
         python3-num2words \
         python3-odf \
@@ -52,6 +50,7 @@ RUN apt-get update && \
         python3-xlrd \
         python3-xlwt \
         python3-wheel \
+        python3-cffi \
         build-essential \
         autoconf \
         libtool \
@@ -112,7 +111,7 @@ COPY ./requirements.txt /opt/odoo
 RUN useradd -m odoo && echo odoo:odoo | chpasswd
 
 RUN pip3 install wheel psycopg2-binary
-RUN pip install -r /opt/odoo/requirements.txt
+RUN pip3 install -r /opt/odoo/requirements.txt
 
 RUN cp /opt/odoo/setup/odoo /opt/odoo/odoo-bin && chmod +x /opt/odoo/odoo-bin
 # Copy entrypoint script and Odoo configuration file
