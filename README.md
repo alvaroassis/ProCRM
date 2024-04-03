@@ -12,25 +12,36 @@ Instalação do Docker
 
 1. Remoção de versões antigas:
   ```
-  $ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+  for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
   ```
 Para uma instalação limpa pode ser necessária a exclusão de todo conteúdo existente na pasta `/var/lib/docker`.
 
 2. Configurar o repositório `apt` do Docker:
 
+Add Docker's official GPG key:
 ```
-# Add Docker's official GPG key:
 sudo apt-get update
+```
+```
 sudo apt-get install ca-certificates curl
+```
+```
 sudo install -m 0755 -d /etc/apt/keyrings
+```
+```
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+```
+```
 sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
+```
+Add the repository to Apt sources:
+```
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+```
 sudo apt-get update
 ```  
 
@@ -40,7 +51,27 @@ sudo apt-get update
 
 3. Instalação dos pacotes do Docker:
 ```
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
+
+Instalando o Docker-Compose:
+---------------
+1. baixando o docker-compose:
+
+```
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+```
+
+2. Alterando permissão de execução para o comando:
+
+```
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+3. Criando link simbólico para o comando:
+
+```
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
 Instalação do Portainer Community Edition:
@@ -49,7 +80,7 @@ Instalação do Portainer Community Edition:
 1. Primeiro vamos criar o volume que o Portainer Server utilizará para armazenar sua database:
 
 ```
-$ docker volume create portainer_data
+sudo docker volume create portainer_data
 ```
 
 2. Baixando e instalando o Portainer:
@@ -60,39 +91,19 @@ $ docker volume create portainer_data
 >Caso for utilizar certificado SSL você deve passar a porta 9443 como parâmetro `-p 9443:9443` no lugar da porta 9000.
 
 ```
-docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+sudo docker run -d -p 8000:8000 -p 9000:9000 --name portainer --privileged --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 ```
 
 3. Primeiro acesso ao Portainer:
 
    Acesse pelo navegador a interface `http://localhost:9000` e cadastre o usuário de administração do Portainer.
 
-Instalando o Docker-Compose:
----------------
-1. baixando o docker-compose:
-
-```
-$ curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
-```
-
-2. Alterando permissão de execução para o comando:
-
-```
-$ chmod +x /usr/local/bin/docker-compose
-```
-
-3. Criando link simbólico para o comando:
-
-```
-$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-```
-
 Copiando o repositório do ProCRM para o Servidor do Docker:
 --------------------
 1. Dentro da pasta de destino no Servidor Docker, utilize o comando abaixo para baixa uma cópia do repositório do ProCRM:
 
 ```
-$ git clone https://github.com/alvaroassis/ProCRM.git
+sudo git clone https://github.com/alvaroassis/ProCRM.git
 ```
 
 Criando o build da imagem do ProCRM:
