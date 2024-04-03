@@ -127,7 +127,8 @@ RUN chown odoo /etc/odoo/odoo.conf \
     && chown -R odoo /mnt/extra-addons \
     && mkdir -p /var/lib/odoo \
     && chown -R odoo /var/lib/odoo \
-    && chown -R odoo /entrypoint.sh
+    && chown -R odoo /entrypoint.sh \
+    && chmod +x /entrypoint.sh
 VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
 
 # Expose Odoo services
