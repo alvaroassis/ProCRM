@@ -35,6 +35,7 @@ RUN apt-get update && \
         libssl-dev \
         node-less \
         npm \
+        python3-cffi \
         python3-magic \
         python3-num2words \
         python3-odf \
