@@ -110,7 +110,7 @@ Criando o build da imagem do ProCRM:
 ----------------------------
 1. Dentro da pasta do projeto, onde está o arquivo Dockerfile, execute o seguinte comando:
 ```
-$ docker build -t prodemge/procrm:1.0
+sudo docker build -t prodemge/procrm:1.0
 ```
 
 Executando os containers através do docker-compose:
@@ -118,7 +118,7 @@ Executando os containers através do docker-compose:
 1. Na pasta onde está o arquivo docker-compose.yml, execute o seguinte comando:
 
 ```
-$ docker-compose up -d
+sudo docker-compose up -d
 ```
 
 Iniciando o Docker do Servidor do PostgreSQL:
@@ -126,7 +126,7 @@ Iniciando o Docker do Servidor do PostgreSQL:
 
 1. Utilize o comando abaixo para iniciar fazer o deploy do docker do banco de dados postgreSQL:
 ```
-$ docker run -d -v procrm-db-data:/var/lib/postgresql/data -e POSTGRES_USER=procrm -e POSTGRES_PASSWORD=procrm -e POSTGRES_DB=procrmdb --name db postgres:15
+sudo docker run -d -v procrm-db-data:/var/lib/postgresql/data -e POSTGRES_USER=procrm -e POSTGRES_PASSWORD=procrm -e POSTGRES_DB=procrmdb --name db postgres:15
 ```
 
 Executando o container de aplicação do ProCRM:
@@ -134,7 +134,7 @@ Executando o container de aplicação do ProCRM:
 1. Utilize o comando abaixo para subir o container passando o volume onde serão armazenados os dados da aplicação:
 
 ```
-$ docker run -d -v procrm-data:/var/lib/odoo --link db:db prodemge/procrm:1.0
+sudo docker run -d -v procrm-data:/var/lib/odoo --link db:db prodemge/procrm:1.0
 ```
 -------------------------------------------------
 [![Build Status](https://runbot.odoo.com/runbot/badge/flat/1/master.svg)](https://runbot.odoo.com/runbot)
