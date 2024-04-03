@@ -124,21 +124,6 @@ Executando os containers através do docker-compose:
 sudo docker-compose up -d
 ```
 
-Iniciando o Docker do Servidor do PostgreSQL:
------------------
-
-1. Utilize o comando abaixo para iniciar fazer o deploy do docker do banco de dados postgreSQL:
-```
-sudo docker run -d -v procrm-db-data:/var/lib/postgresql/data -e POSTGRES_USER=procrm -e POSTGRES_PASSWORD=procrm -e POSTGRES_DB=procrmdb --name db postgres:15
-```
-
-Executando o container de aplicação do ProCRM:
-------------
-1. Utilize o comando abaixo para subir o container passando o volume onde serão armazenados os dados da aplicação:
-
-```
-sudo docker run -d -v procrm-data:/var/lib/odoo --link db:db prodemge/procrm:1.0
-```
 -------------------------------------------------
 [![Build Status](https://runbot.odoo.com/runbot/badge/flat/1/master.svg)](https://runbot.odoo.com/runbot)
 [![Tech Doc](https://img.shields.io/badge/master-docs-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/documentation/17.0)
