@@ -35,6 +35,7 @@ RUN apt-get update && \
         libssl-dev \
         node-less \
         npm \
+        python-dev \
         python3-magic \
         python3-num2words \
         python3-odf \
@@ -111,7 +112,7 @@ COPY ./requirements.txt /opt/odoo
 RUN useradd -m odoo && echo odoo:odoo | chpasswd
 
 RUN pip3 install wheel psycopg2-binary
-RUN pip3 install -r /opt/odoo/requirements.txt
+RUN pip install -r /opt/odoo/requirements.txt
 
 RUN cp /opt/odoo/setup/odoo /opt/odoo/odoo-bin && chmod +x /opt/odoo/odoo-bin
 # Copy entrypoint script and Odoo configuration file
