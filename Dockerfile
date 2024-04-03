@@ -34,6 +34,7 @@ RUN apt-get update && \
         libssl-dev \
         node-less \
         npm \
+        python3-dev \
         python3-magic \
         python3-num2words \
         python3-odf \
@@ -51,9 +52,11 @@ RUN apt-get update && \
         python3-xlwt \
         python3-wheel \
         python3-cffi \
+        python3-psycopg2 \
         build-essential \
         autoconf \
         libtool \
+        libpq-dev \
         pkg-config \
         python3-dev \
         libldap2-dev \
