@@ -3594,8 +3594,8 @@ msgstr "ILY"
 #: code:addons/web/static/src/views/fields/datetime/datetime_field.js:0
 #: code:addons/web/static/src/views/fields/datetime/datetime_field.js:0
 #, python-format
-msgid "ISO-formatted date (e.g. \"2018-12-31\") or \"today\"."
-msgstr "ISO-muotoinen päivämäärä (esim. \"2018-12-31\") tai \"tänään\"."
+msgid "ISO-formatted date (e.g. \"2018-12-31\") or \"%s\"."
+msgstr ""
 
 #. module: web
 #. odoo-javascript
@@ -5095,6 +5095,13 @@ msgstr "Ei aktiivista tilaa"
 #, python-format
 msgid "Not active state, click to change it"
 msgstr "Ei aktiivista tilaa, klikkaa muuttaaksesi"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/many2many_binary/many2many_binary_field.js:0
+#, python-format
+msgid "Number of files"
+msgstr ""
 
 #. module: web
 #. odoo-javascript

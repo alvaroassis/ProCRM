@@ -2071,7 +2071,7 @@ msgid ""
 "(active field is True)"
 msgstr ""
 "Filtra solo las asignaciones que pertenecen a un tipo de ausencia \"activo\""
-" (el campo activo es True)."
+" (el campo activo es Verdadero)."
 
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave__first_approver_id
@@ -3728,9 +3728,9 @@ msgid ""
 "The employee, department, company or employee category of this request is "
 "missing. Please make sure that your user login is linked to an employee."
 msgstr ""
-"Falta el empleado, el departamento, la compañía o la categoría de empleado "
-"de esta solicitud. Asegúrese de que el nombre de usuario esté vinculado a un"
-" empleado."
+"Falta el empleado, el departamento, la empresa o la categoría de empleado de"
+" esta solicitud. Asegúrese de que el nombre de usuario esté vinculado a un "
+"empleado."
 
 #. module: hr_holidays
 #. odoo-python
@@ -4650,6 +4650,14 @@ msgid ""
 msgstr ""
 "No puedes ser el primero en aprobar una ausencia para %s, porque no eres su "
 "gerente de ausencias"
+
+#. module: hr_holidays
+#. odoo-python
+#: code:addons/hr_holidays/models/hr_leave_accrual_plan_level.py:0
+#, python-format
+msgid ""
+"You cannot have a cap on accrued time without setting a maximum amount."
+msgstr ""
 
 #. module: hr_holidays
 #. odoo-python

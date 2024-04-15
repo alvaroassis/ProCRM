@@ -2419,9 +2419,9 @@ class AccountMove(models.Model):
                 for command, line_id, *line_vals in vals['invoice_line_ids']
                 if command == Command.UPDATE
             }
-            for command, line_id, line_vals in vals['line_ids']:
+            for command, line_id, *line_vals in vals['line_ids']:
                 if command == Command.UPDATE and line_id in update_vals:
-                    line_vals.update(update_vals.pop(line_id))
+                    line_vals[0].update(update_vals.pop(line_id))
             for line_id, line_vals in update_vals.items():
                 vals['line_ids'] += [Command.update(line_id, line_vals)]
             for command, line_id, *line_vals in vals['invoice_line_ids']:
@@ -3157,7 +3157,7 @@ class AccountMove(models.Model):
                 close_file(file_data)
                 continue
 
-            decoder = self._get_edi_decoder(file_data, new=new)
+            decoder = (current_invoice or current_invoice.new(self.default_get(['move_type', 'journal_id'])))._get_edi_decoder(file_data, new=new)
             if decoder:
                 try:
                     with self.env.cr.savepoint():
@@ -4481,6 +4481,22 @@ class AccountMove(models.Model):
         composer_vals = self._get_pdf_and_send_invoice_vals(template, **kwargs)
         composer = self.env['account.move.send'].create(composer_vals)
         return composer.action_send_and_print(force_synchronous=force_synchronous, allow_fallback_pdf=allow_fallback_pdf, bypass_download=bypass_download)
+
+    def _get_invoice_legal_documents(self):
+        """ Return existing attachments or a temporary Pro Forma pdf. """
+        self.ensure_one()
+        if self.invoice_pdf_report_id:
+            attachments = self.env['account.move.send']._get_invoice_extra_attachments(self)
+        else:
+            content, _ = self.env['ir.actions.report']._render('account.account_invoices', self.ids, data={'proforma': True})
+            attachments = self.env['ir.attachment'].new({
+                'raw': content,
+                'name': self._get_invoice_proforma_pdf_report_filename(),
+                'mimetype': 'application/pdf',
+                'res_model': self._name,
+                'res_id': self.id,
+            })
+        return attachments
 
     def get_invoice_pdf_report_attachment(self):
         if len(self) < 2 and self.invoice_pdf_report_id:

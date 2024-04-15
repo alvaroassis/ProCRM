@@ -3496,7 +3496,7 @@ msgstr "Buat Nomor Seri"
 #: code:addons/stock/static/src/widgets/lots_dialog.xml:0
 #, python-format
 msgid "Generate Serials/Lots"
-msgstr ""
+msgstr "Buat Seri/Lot"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
@@ -4784,6 +4784,13 @@ msgstr "Lokasi: Kapan sampai ke"
 #, python-format
 msgid "Locations"
 msgstr "Lokasi"
+
+#. module: stock
+#. odoo-python
+#: code:addons/stock/models/stock_picking.py:0
+#, python-format
+msgid "Locations to update"
+msgstr ""
 
 #. module: stock
 #: model:ir.actions.server,name:stock.action_toggle_is_locked

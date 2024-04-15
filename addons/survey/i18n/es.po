@@ -478,6 +478,33 @@ msgstr ""
 "</span>"
 
 #. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.question_result_number_or_date_or_datetime
+msgid ""
+"<span class=\"badge text-bg-secondary only_left_radius px-2 pt-1\">Avg "
+"</span>"
+msgstr ""
+"<span class=\"badge text-bg-secondary only_left_radius px-2 pt-1\">Promedio "
+"</span>"
+
+#. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.question_result_number_or_date_or_datetime
+msgid ""
+"<span class=\"badge text-bg-secondary only_left_radius px-2 pt-1\">Max "
+"</span>"
+msgstr ""
+"<span class=\"badge text-bg-secondary only_left_radius px-2 pt-1\">Máximo "
+"</span>"
+
+#. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.question_result_number_or_date_or_datetime
+msgid ""
+"<span class=\"badge text-bg-secondary only_left_radius px-2 pt-1\">Min "
+"</span>"
+msgstr ""
+"<span class=\"badge text-bg-secondary only_left_radius px-2 pt-1\">Mínimo "
+"</span>"
+
+#. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_page_statistics_question
 msgid "<span class=\"d-block text-muted\">Responded</span>"
 msgstr "<span class=\"d-block text-muted\">Respondido</span>"
@@ -616,9 +643,29 @@ msgid "<span class=\"text-muted\">Registered</span>"
 msgstr "<span class=\"text-muted\">Registrados</span>"
 
 #. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.survey_page_statistics_question
+msgid "<span class=\"text-muted\">Responded</span>"
+msgstr "<span class=\"text-muted\">Respondido</span>"
+
+#. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.survey_page_statistics_question
+msgid "<span class=\"text-muted\">Skipped</span>"
+msgstr "<span class=\"text-muted\">Omitido</span>"
+
+#. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_survey_view_kanban
 msgid "<span class=\"text-muted\">Success</span>"
 msgstr "<span class=\"text-muted\">Éxito</span>"
+
+#. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.survey_page_statistics_question
+msgid "<span class=\"text-success\">Correct</span>"
+msgstr "<span class=\"text-success\">Correcto</span>"
+
+#. module: survey
+#: model_terms:ir.ui.view,arch_db:survey.survey_page_statistics_question
+msgid "<span class=\"text-warning\">Partial</span>"
+msgstr "<span class=\"text-warning\">Parcial</span>"
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_question_form
@@ -1268,7 +1315,7 @@ msgstr "Bruselas, Bélgica"
 #. module: survey
 #: model:survey.survey,title:survey.survey_demo_burger_quiz
 msgid "Burger Quiz"
-msgstr "Prueba de hamburguesas"
+msgstr "Cuestionario de hamburguesas"
 
 #. module: survey
 #. odoo-python
@@ -3260,7 +3307,7 @@ msgstr "Ya que ha terminado, envíe su formulario."
 #: code:addons/survey/static/src/js/tours/survey_tour.js:0
 #, python-format
 msgid "Now, use this shortcut to go back to the survey."
-msgstr "Utilice este acceso directo para regresar a la encuesta."
+msgstr "Utilice este acceso rápido para regresar a la encuesta."
 
 #. module: survey
 #: model:ir.model.fields.selection,name:survey.selection__survey_survey__progression_mode__number
@@ -3858,17 +3905,17 @@ msgstr ""
 #. module: survey
 #: model:survey.survey,title:survey.survey_demo_quiz
 msgid "Quiz about our Company"
-msgstr "Prueba sobre nuestra empresa"
+msgstr "Cuestionario sobre nuestra empresa"
 
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_user_input__scoring_success
 msgid "Quizz Passed"
-msgstr "Prueba aprobada"
+msgstr "Cuestionario aprobado"
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_user_input_view_search
 msgid "Quizz passed"
-msgstr "Prueba aprobada"
+msgstr "Cuestionario aprobado"
 
 #. module: survey
 #: model:ir.model.fields.selection,name:survey.selection__survey_survey__questions_selection__random
@@ -5620,7 +5667,7 @@ msgid ""
 "live presentation, ..."
 msgstr ""
 "Puede compartir sus enlaces a través de diferentes medios: correo "
-"electrónico, acceso directo desde la invitación, presentación en vivo, ..."
+"electrónico, acceso rápido desde la invitación, presentación en vivo, ..."
 
 #. module: survey
 #. odoo-python
@@ -5708,7 +5755,7 @@ msgstr "Ampliar"
 #: code:addons/survey/static/src/xml/survey_image_zoomer_templates.xml:0
 #, python-format
 msgid "Zoom out"
-msgstr "Reducir"
+msgstr "Alejarse"
 
 #. module: survey
 #. odoo-javascript

@@ -101,7 +101,8 @@ class SaleOrder(models.Model):
         claimable_rewards = self._get_claimable_rewards()
         if len(claimable_rewards) == 1:
             coupon = next(iter(claimable_rewards))
-            if len(claimable_rewards[coupon]) == 1:
+            rewards = claimable_rewards[coupon]
+            if len(rewards) == 1 and not rewards.multi_product:
                 self._apply_program_reward(claimable_rewards[coupon], coupon)
                 return True
         elif not claimable_rewards:
@@ -881,6 +882,9 @@ class SaleOrder(models.Model):
             rule_points = []
             program_result = result.setdefault(program, dict())
             for rule in program.rule_ids:
+                # prevent bottomless ewallet spending
+                if program.program_type == 'ewallet' and not program.trigger_product_ids:
+                    break
                 if rule.mode == 'with_code' and rule not in self.code_enabled_rule_ids:
                     continue
                 code_matched = True

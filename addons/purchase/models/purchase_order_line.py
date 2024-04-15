@@ -63,7 +63,7 @@ class PurchaseOrderLine(models.Model):
     qty_to_invoice = fields.Float(compute='_compute_qty_invoiced', string='To Invoice Quantity', store=True, readonly=True,
                                   digits='Product Unit of Measure')
 
-    partner_id = fields.Many2one('res.partner', related='order_id.partner_id', string='Partner', readonly=True, store=True)
+    partner_id = fields.Many2one('res.partner', related='order_id.partner_id', string='Partner', readonly=True, store=True, index='btree_not_null')
     currency_id = fields.Many2one(related='order_id.currency_id', store=True, string='Currency', readonly=True)
     date_order = fields.Datetime(related='order_id.date_order', string='Order Date', readonly=True)
     date_approve = fields.Datetime(related="order_id.date_approve", string='Confirmation Date', readonly=True)
@@ -287,7 +287,7 @@ class PurchaseOrderLine(models.Model):
         self.product_uom = self.product_id.uom_po_id or self.product_id.uom_id
         product_lang = self.product_id.with_context(
             lang=get_lang(self.env, self.partner_id.lang).code,
-            partner_id=self.partner_id.id,
+            partner_id=None,
             company_id=self.company_id.id,
         )
         self.name = self._get_product_purchase_description(product_lang)
@@ -364,6 +364,8 @@ class PurchaseOrderLine(models.Model):
             # record product names to avoid resetting custom descriptions
             default_names = []
             vendors = line.product_id._prepare_sellers({})
+            product_ctx = {'seller_id': None, 'partner_id': None, 'lang': get_lang(line.env, line.partner_id.lang).code}
+            default_names.append(line._get_product_purchase_description(line.product_id.with_context(product_ctx)))
             for vendor in vendors:
                 product_ctx = {'seller_id': vendor.id, 'lang': get_lang(line.env, line.partner_id.lang).code}
                 default_names.append(line._get_product_purchase_description(line.product_id.with_context(product_ctx)))

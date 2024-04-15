@@ -21,6 +21,7 @@ class StockQuant(models.Model):
     _name = 'stock.quant'
     _description = 'Quants'
     _rec_name = 'product_id'
+    _rec_names_search = ['location_id', 'lot_id', 'package_id', 'owner_id']
 
     def _domain_location_id(self):
         if self.user_has_groups('stock.group_stock_user'):
@@ -73,7 +74,8 @@ class StockQuant(models.Model):
         help='The package containing this quant', ondelete='restrict', check_company=True, index=True)
     owner_id = fields.Many2one(
         'res.partner', 'Owner',
-        help='This is the owner of the quant', check_company=True)
+        help='This is the owner of the quant', check_company=True,
+        index='btree_not_null')
     quantity = fields.Float(
         'Quantity',
         help='Quantity of products in this quant, in the default unit of measure of the product',

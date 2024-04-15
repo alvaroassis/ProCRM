@@ -5,6 +5,7 @@
 # Translators:
 # Wil Odoo, 2023
 # Martin Trigaux, 2024
+# Roman Dereka <rode@odoo.com>, 2024
 # Alina Lisnenko <alina.lisnenko@erp.co.ua>, 2024
 # 
 msgid ""
@@ -962,7 +963,7 @@ msgid ""
 "===============================================\n"
 msgstr ""
 "\n"
-"Бухгалтерські дані для правил зарплати Сполучених Штатів\n"
+"Бухгалтерські дані для правил зарплатні Сполучених Штатів\n"
 "===============================================\n"
 
 #. module: base
@@ -22301,7 +22302,7 @@ msgstr "Майотта"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_room
 msgid "Meeting Rooms"
-msgstr ""
+msgstr "Кімнати для зустрічей"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_membership
@@ -27990,7 +27991,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.category,name:base.module_category_services_room
 msgid "Room"
-msgstr ""
+msgstr "Кімната"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__root_id

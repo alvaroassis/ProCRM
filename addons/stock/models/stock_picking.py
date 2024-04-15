@@ -464,7 +464,7 @@ class Picking(models.Model):
     hide_picking_type = fields.Boolean(compute='_compute_hide_picking_type')
     partner_id = fields.Many2one(
         'res.partner', 'Contact',
-        check_company=True)
+        check_company=True, index='btree_not_null')
     company_id = fields.Many2one(
         'res.company', string='Company', related='picking_type_id.company_id',
         readonly=True, store=True, index=True)
@@ -488,7 +488,7 @@ class Picking(models.Model):
         help='Technical Field used to decide whether the button "Allocation" should be displayed.')
     owner_id = fields.Many2one(
         'res.partner', 'Assign Owner',
-        check_company=True,
+        check_company=True, index='btree_not_null',
         help="When validating the transfer, the products will be assigned to this owner.")
     printed = fields.Boolean('Printed', copy=False)
     signature = fields.Image('Signature', help='Signature', copy=False, attachment=True)
@@ -813,7 +813,7 @@ class Picking(models.Model):
         })
         if self._origin.location_id != self.location_id and any(line.quantity for line in self.move_ids.move_line_ids):
             return {'warning': {
-                    'title': 'Locations to update',
+                    'title': _("Locations to update"),
                     'message': _("You might want to update the locations of this transfer's operations")
                     }
             }
@@ -1028,15 +1028,13 @@ class Picking(models.Model):
                 else:
                     move_lines_in_package_level = move_lines_to_pack.filtered(lambda ml: ml.move_id.package_level_id)
                     move_lines_without_package_level = move_lines_to_pack - move_lines_in_package_level
+                    if package.package_use == 'disposable':
+                        (move_lines_in_package_level | move_lines_without_package_level).result_package_id = package
+                    move_lines_in_package_level.result_package_id = package
                     for ml in move_lines_in_package_level:
-                        ml.write({
-                            'result_package_id': package.id,
-                            'package_level_id': ml.move_id.package_level_id.id,
-                        })
-                    move_lines_without_package_level.write({
-                        'result_package_id': package.id,
-                        'package_level_id': package_level_ids[0].id,
-                    })
+                        ml.package_level_id = ml.move_id.package_level_id.id
+                    move_lines_without_package_level.package_level_id = package_level_ids[0].id
+
                     for pl in package_level_ids:
                         pl.location_dest_id = pickings._get_entire_pack_location_dest(pl.move_line_ids) or pickings.location_dest_id.id
                     for move in move_lines_to_pack.move_id:

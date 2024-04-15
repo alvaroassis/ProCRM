@@ -472,8 +472,8 @@ msgid ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
 "specific.\"/>"
 msgstr ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\"/>"
+"<span class=\"fa fa-lg fa-building-o\" title=\"Los valores establecidos aquí"
+" son específicos de la compañía.\"/>"
 
 #. module: account_edi_ubl_cii
 #. odoo-python
@@ -862,8 +862,7 @@ msgstr "El campo %s es requerido en %s"
 msgid ""
 "The field 'Sanitized Account Number' is required on the Recipient Bank."
 msgstr ""
-"El campo 'Número de cuenta sanitizado' es requerido en el banco "
-"destinatario."
+"El campo 'Número de cuenta depurado' es requerido en el banco destinatario."
 
 #. module: account_edi_ubl_cii
 #. odoo-python
@@ -874,6 +873,9 @@ msgid ""
 "Please check those in their Accounting tab. Otherwise, the generated files "
 "will be incomplete."
 msgstr ""
+"Los siguientes contactos no tienen información en el campo Peppol EAS o "
+"Punto de conexión de Peppol: %s. Verifique los datos en la pestaña "
+"Contabilidad o los archivos generados estarán incompletos."
 
 #. module: account_edi_ubl_cii
 #. odoo-python
@@ -905,6 +907,9 @@ msgid ""
 "This partner is missing Peppol EAS or Peppol Endpoint field. Please check "
 "those in its Accounting tab or the generated file will be incomplete."
 msgstr ""
+"Este contacto no tiene información en el campo Peppol EAS o Punto de "
+"conexión de Peppol. Verifique los datos en la pestaña Contabilidad o el "
+"archivo generado estará incompleto."
 
 #. module: account_edi_ubl_cii
 #. odoo-python
