@@ -916,6 +916,10 @@ registry.backgroundVideo = publicWidget.Widget.extend(MobileYoutubeAutoplayMixin
         this.$iframe = this.$bgVideoContainer.find('.o_bg_video_iframe');
         this.$iframe.one('load', () => {
             this.$bgVideoContainer.find('.o_bg_video_loading').remove();
+            // When there is a "slide in (left or right) animation" element, we
+            // need to adjust the iframe size once it has been loaded, otherwise
+            // an horizontal scrollbar may appear.
+            this._adjustIframe();
         });
         this.$bgVideoContainer.prependTo(this.$el);
         $oldContainer.remove();
@@ -1600,7 +1604,8 @@ registry.WebsiteAnimate = publicWidget.Widget.extend({
      * @param {Event} ev
      */
     _onScrollWebsiteAnimate(ev) {
-        this._scrollWebsiteAnimate(ev.currentTarget);
+        // Note: Do not rely on ev.currentTarget which might be lost by Chrome.
+        this._scrollWebsiteAnimate(this.$scrollingElement[0]);
     },
 });
 

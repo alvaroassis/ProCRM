@@ -11,10 +11,10 @@
 # Mads Søndergaard, 2023
 # Mads Søndergaard, 2023
 # Kjeld Borch Egevang <kjeld@mail4us.dk>, 2024
-# lhmflexerp <lhm@flexerp.dk>, 2024
 # Martin Trigaux, 2024
 # Ejner Sønniksen <ejner@vkdata.dk>, 2024
 # Sanne Kristensen <sanne@vkdata.dk>, 2024
+# lhmflexerp <lhm@flexerp.dk>, 2024
 # 
 msgid ""
 msgstr ""
@@ -22,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-29 10:44+0000\n"
 "PO-Revision-Date: 2023-10-26 23:09+0000\n"
-"Last-Translator: Sanne Kristensen <sanne@vkdata.dk>, 2024\n"
+"Last-Translator: lhmflexerp <lhm@flexerp.dk>, 2024\n"
 "Language-Team: Danish (https://app.transifex.com/odoo/teams/41243/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -6624,7 +6624,7 @@ msgstr "Første faktura afsendt!"
 #: model:ir.model.fields,field_description:account.field_account_move__auto_post_origin_id
 #: model:ir.model.fields,field_description:account.field_account_payment__auto_post_origin_id
 msgid "First recurring entry"
-msgstr ""
+msgstr "Første gentagende post"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_company__account_fiscal_country_id
@@ -8183,7 +8183,7 @@ msgstr "Faktura/regnings dato"
 #. module: account
 #: model:mail.template,name:account.email_template_edi_invoice
 msgid "Invoice: Sending"
-msgstr ""
+msgstr "Faktura: Send"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_invoice_report_search
@@ -8502,7 +8502,7 @@ msgstr "Journalbilag ud fra dato"
 #: model_terms:ir.ui.view,arch_db:account.view_move_line_tree
 #, python-format
 msgid "Journal Entry"
-msgstr "Postering"
+msgstr "Journalbilag"
 
 #. module: account
 #. odoo-python
@@ -8557,7 +8557,7 @@ msgstr ""
 #: code:addons/account/static/src/components/account_payment_field/account_payment_field.js:0
 #, python-format
 msgid "Journal Entry Info"
-msgstr "Journalpost Info"
+msgstr "Journalbilag Info"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_journal_group__name
@@ -10313,7 +10313,7 @@ msgstr "Åbningsjournal"
 #: model:ir.model.fields,field_description:account.field_res_company__account_opening_move_id
 #, python-format
 msgid "Opening Journal Entry"
-msgstr "Åbnings journalpostering"
+msgstr "Åbnings journalbilag"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_financial_year_op__opening_move_posted
@@ -11045,7 +11045,7 @@ msgstr ""
 #. module: account
 #: model:mail.template,name:account.mail_template_data_payment_receipt
 msgid "Payment: Payment Receipt"
-msgstr ""
+msgstr "Betalings: Betalingskvittering"
 
 #. module: account
 #. odoo-python
@@ -12064,7 +12064,7 @@ msgstr "Tilbagefør postering"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_reversal
 msgid "Reverse Journal Entry"
-msgstr "Tilbageførsels journalpostering"
+msgstr "Tilbageførsels journalbilag"
 
 #. module: account
 #. odoo-python
@@ -12354,7 +12354,7 @@ msgstr "Søg i bank kontoudtog"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_report__search_bar
 msgid "Search Bar"
-msgstr ""
+msgstr "Søgefelt"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_position_filter
@@ -12704,6 +12704,8 @@ msgid ""
 "Sent manually to customer when clicking on 'Send receipt by email' in "
 "payment action"
 msgstr ""
+"Sendt manuelt til kunde når der klikkes på 'Send kvittering per email' ved "
+"betaling"
 
 #. module: account
 #: model:mail.template,description:account.email_template_edi_credit_note
@@ -12713,7 +12715,7 @@ msgstr "Sendes til kunder med kreditnotaen vedhæftet"
 #. module: account
 #: model:mail.template,description:account.email_template_edi_invoice
 msgid "Sent to customers with their invoices in attachment"
-msgstr ""
+msgstr "Sendt til kunder med deres fakturaer vedhæftet"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_company__account_discount_expense_allocation_id
@@ -15160,7 +15162,7 @@ msgstr "Denne afstemnings model har endnu ikke oprettet nogen postering"
 #: code:addons/account/models/account_move.py:0
 #, python-format
 msgid "This recurring entry originated from %s"
-msgstr ""
+msgstr "Denne gentagende post stammer fra %s"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_bank_statement_line__auto_post_until
@@ -16597,11 +16599,9 @@ msgstr ""
 #: code:addons/account/wizard/account_payment_register.py:0
 #, python-format
 msgid ""
-"You can't register payments for journal items being either all inbound, "
-"either all outbound."
+"You can't register payments for both inbound and outbound moves at the same "
+"time."
 msgstr ""
-"Du kan ikke registrere betalinger for journalposter der enten alle er "
-"indgående eller udgående."
 
 #. module: account
 #. odoo-python
@@ -16720,6 +16720,24 @@ msgstr ""
 "Du kan ikke slette denne postering, eftersom den allerede har forbrugt et "
 "sekvensnummer, og ikke er den sidste i kæden. Du bør formentlig tilbageføre "
 "den i stedet"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"You cannot delete this report (%s), it is used by the accounting PDF "
+"generation engine."
+msgstr ""
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_account_tag.py:0
+#, python-format
+msgid ""
+"You cannot delete this account tag (%s), it is used on the chart of account "
+"definition."
+msgstr ""
 
 #. module: account
 #. odoo-python

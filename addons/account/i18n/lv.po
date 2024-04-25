@@ -16771,11 +16771,9 @@ msgstr ""
 #: code:addons/account/wizard/account_payment_register.py:0
 #, python-format
 msgid ""
-"You can't register payments for journal items being either all inbound, "
-"either all outbound."
+"You can't register payments for both inbound and outbound moves at the same "
+"time."
 msgstr ""
-"Jūs nevarat reģistrēt maksājumus par žurnāla vienībām, kas ir vai nu visas "
-"ienākošās, vai visas izejošās."
 
 #. module: account
 #. odoo-python
@@ -16898,6 +16896,24 @@ msgid ""
 msgstr ""
 "Šo ierakstu nevar dzēst, jo tam jau ir piešķirts kārtas numurs un tas nav "
 "pēdējais ieraksts ķēdē. Tā vietā, iespējams, vajadzētu to atgriezt."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"You cannot delete this report (%s), it is used by the accounting PDF "
+"generation engine."
+msgstr ""
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_account_tag.py:0
+#, python-format
+msgid ""
+"You cannot delete this account tag (%s), it is used on the chart of account "
+"definition."
+msgstr ""
 
 #. module: account
 #. odoo-python

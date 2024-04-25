@@ -39,7 +39,7 @@ class Applicant(models.Model):
         inverse='_inverse_partner_email', store=True, index='trigram')
     email_normalized = fields.Char(index='trigram')  # inherited via mail.thread.blacklist
     probability = fields.Float("Probability")
-    partner_id = fields.Many2one('res.partner', "Contact", copy=False)
+    partner_id = fields.Many2one('res.partner', "Contact", copy=False, index='btree_not_null')
     create_date = fields.Datetime("Applied on", readonly=True)
     stage_id = fields.Many2one('hr.recruitment.stage', 'Stage', ondelete='restrict', tracking=True,
                                compute='_compute_stage', store=True, readonly=False,
@@ -446,17 +446,6 @@ class Applicant(models.Model):
             and not self.user_has_groups('hr_recruitment.group_hr_recruitment_user'):
             view_id = self.env.ref('hr_recruitment.hr_applicant_view_form_interviewer').id
         return super().get_view(view_id, view_type, **options)
-
-    def _notify_get_recipients(self, message, msg_vals, **kwargs):
-        """
-            Do not notify members of the Recruitment Interviewer group that are not part of
-            Recruitment User group as well, as this
-            might leak some data they shouldn't have access to.
-        """
-        recipients = super()._notify_get_recipients(message, msg_vals, **kwargs)
-        interviewer_group = self.env.ref('hr_recruitment.group_hr_recruitment_interviewer').id
-        user_group = self.env.ref('hr_recruitment.group_hr_recruitment_user').id
-        return [recipient for recipient in recipients if not (interviewer_group in recipient['groups'] and user_group not in recipient['groups'])]
 
     def action_makeMeeting(self):
         """ This opens Meeting's calendar view to schedule meeting on current applicant

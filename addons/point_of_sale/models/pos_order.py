@@ -538,7 +538,12 @@ class PosOrder(models.Model):
         }
 
     def _is_pos_order_paid(self):
-        return float_is_zero(self._get_rounded_amount(self.amount_total) - self.amount_paid, precision_rounding=self.currency_id.rounding)
+        amount_total = self.amount_total
+        # If we are checking if a refund was paid and if it was a total refund, we take into account the amount paid on
+        # the original order. For a pertial refund, we take into account the value of the items returned.
+        if float_is_zero(self.refunded_order_ids.amount_total + amount_total, precision_rounding=self.currency_id.rounding):
+            amount_total = -self.refunded_order_ids.amount_paid
+        return float_is_zero(self._get_rounded_amount(amount_total) - self.amount_paid, precision_rounding=self.currency_id.rounding)
 
     def _get_rounded_amount(self, amount, force_round=False):
         # TODO: add support for mix of cash and non-cash payments when both cash_rounding and only_round_cash_method are True
@@ -661,7 +666,7 @@ class PosOrder(models.Model):
             'journal_id': self.session_id.config_id.invoice_journal_id.id,
             'move_type': 'out_invoice' if self.amount_total >= 0 else 'out_refund',
             'ref': self.name,
-            'partner_id': self.partner_id.id,
+            'partner_id': self.partner_id.address_get(['invoice'])['invoice'],
             'partner_bank_id': self._get_partner_bank_id(),
             'currency_id': self.currency_id.id,
             'invoice_user_id': self.user_id.id,
@@ -735,7 +740,7 @@ class PosOrder(models.Model):
 
         # Cash rounding.
         cash_rounding = self.config_id.rounding_method
-        if self.config_id.cash_rounding and cash_rounding and not self.config_id.only_round_cash_method:
+        if self.config_id.cash_rounding and cash_rounding and (not self.config_id.only_round_cash_method or any(p.payment_method_id.is_cash_count for p in self.payment_ids)):
             amount_currency = cash_rounding.compute_difference(self.currency_id, total_amount_currency)
             if not self.currency_id.is_zero(amount_currency):
                 balance = company_currency.round(amount_currency * rate)
@@ -843,11 +848,15 @@ class PosOrder(models.Model):
         })
         reversal_entry.action_post()
 
-        # Reconcile the new receivable line with the lines from the payment move.
         pos_account_receivable = self.company_id.account_default_pos_receivable_account_id
-        reversal_entry_receivable = reversal_entry.line_ids.filtered(lambda l: l.account_id == pos_account_receivable)
-        payment_receivable = payment_moves.line_ids.filtered(lambda l: l.account_id == pos_account_receivable)
-        (reversal_entry_receivable | payment_receivable).reconcile()
+        account_receivable = self.payment_ids.payment_method_id.receivable_account_id
+        reversal_entry_receivable = reversal_entry.line_ids.filtered(lambda l: l.account_id in (pos_account_receivable + account_receivable))
+        payment_receivable = payment_moves.line_ids.filtered(lambda l: l.account_id in (pos_account_receivable + account_receivable))
+        lines_to_reconcile = defaultdict(lambda: self.env['account.move.line'])
+        for line in (reversal_entry_receivable | payment_receivable):
+            lines_to_reconcile[line.account_id] |= line
+        for line in lines_to_reconcile.values():
+            line.filtered(lambda l: not l.reconciled).reconcile()
 
     def action_pos_order_invoice(self):
         if len(self.company_id) > 1:
@@ -877,7 +886,7 @@ class PosOrder(models.Model):
             new_move.sudo().with_company(order.company_id).with_context(skip_invoice_sync=True)._post()
 
             moves += new_move
-            payment_moves = order._apply_invoice_payments()
+            payment_moves = order._apply_invoice_payments(order.session_id.state == 'closed')
 
             # Send and Print
             if self.env.context.get('generate_pdf', True):
@@ -908,9 +917,9 @@ class PosOrder(models.Model):
     def action_pos_order_cancel(self):
         return self.write({'state': 'cancel'})
 
-    def _apply_invoice_payments(self):
+    def _apply_invoice_payments(self, is_reverse=False):
         receivable_account = self.env["res.partner"]._find_accounting_partner(self.partner_id).with_company(self.company_id).property_account_receivable_id
-        payment_moves = self.payment_ids.sudo().with_company(self.company_id)._create_payment_moves()
+        payment_moves = self.payment_ids.sudo().with_company(self.company_id)._create_payment_moves(is_reverse)
         if receivable_account.reconcile:
             invoice_receivables = self.account_move.line_ids.filtered(lambda line: line.account_id == receivable_account and not line.reconciled)
             if invoice_receivables:

@@ -16817,11 +16817,9 @@ msgstr ""
 #: code:addons/account/wizard/account_payment_register.py:0
 #, python-format
 msgid ""
-"You can't register payments for journal items being either all inbound, "
-"either all outbound."
+"You can't register payments for both inbound and outbound moves at the same "
+"time."
 msgstr ""
-"Du kan inte registrera betalningar för verifikat som antingen är inkommande "
-"eller utgående."
 
 #. module: account
 #. odoo-python
@@ -16944,6 +16942,24 @@ msgstr ""
 "Du kan inte ta bort denna post, eftersom den redan har förbrukat ett "
 "sekvensnummer och inte är den sista i kedjan. Du borde nog återställa det "
 "istället."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"You cannot delete this report (%s), it is used by the accounting PDF "
+"generation engine."
+msgstr ""
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_account_tag.py:0
+#, python-format
+msgid ""
+"You cannot delete this account tag (%s), it is used on the chart of account "
+"definition."
+msgstr ""
 
 #. module: account
 #. odoo-python

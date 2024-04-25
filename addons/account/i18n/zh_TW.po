@@ -3956,7 +3956,7 @@ msgstr "使用歐洲SEPA服務一步點選即可支付"
 msgid ""
 "Collect information and produce statistics on the trade in goods in Europe "
 "with intrastat"
-msgstr "通過內部統計收集資訊並建立歐洲貨物貿易統計資料"
+msgstr "透過 Intrastat 收集貨物在歐洲內貿易的資訊，並編製統計數據"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_account_tag__color
@@ -7737,7 +7737,7 @@ msgstr "國際商業條款是一系列用於國際交易的事先定義的商業
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_config_settings__module_account_intrastat
 msgid "Intrastat"
-msgstr "國際貿易統計組織"
+msgstr "Intrastat"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_bank_statement_search
@@ -10940,7 +10940,7 @@ msgstr "請在您的付款中定義付款方式明細."
 msgid ""
 "The selected payment method is not available for this payment, please select"
 " the payment method again."
-msgstr ""
+msgstr "所選付款方式不適用於本次付款，請重新選擇付款方式。"
 
 #. module: account
 #. odoo-python
@@ -16179,9 +16179,9 @@ msgstr "您無法登記付款，因為所選日記帳項目沒有任何餘款要
 #: code:addons/account/wizard/account_payment_register.py:0
 #, python-format
 msgid ""
-"You can't register payments for journal items being either all inbound, "
-"either all outbound."
-msgstr "您不能為全部收入或全部支出的日記帳項目登記付款.即使全部是境外."
+"You can't register payments for both inbound and outbound moves at the same "
+"time."
+msgstr ""
 
 #. module: account
 #. odoo-python
@@ -16285,6 +16285,24 @@ msgid ""
 "You cannot delete this entry, as it has already consumed a sequence number "
 "and is not the last one in the chain. You should probably revert it instead."
 msgstr "不可刪除此記項，因它已使用序列內的一個號碼，而且不是數據鏈的最後一項。你也許應該恢復它。"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"You cannot delete this report (%s), it is used by the accounting PDF "
+"generation engine."
+msgstr "你不可刪除此報告（%s），因為會計 PDF 生成引擎會使用。"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_account_tag.py:0
+#, python-format
+msgid ""
+"You cannot delete this account tag (%s), it is used on the chart of account "
+"definition."
+msgstr "你不可刪除此賬戶標籤（%s），因為它要用於賬目總表的定義內。"
 
 #. module: account
 #. odoo-python
