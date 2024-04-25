@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- <record id="res_config_settings_view_form_inherit_auth_signup" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.painelnegocios</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="auth_signup.res_config_settings_view_form"/>
+        <field name="arch" type="xml"> -->
+            <!-- Remove customer accounts setting from general settings tab -->
+            <!-- It must not be in the view at all to make sure settings can be saved
+                (because auth_signup_uninvited is specified as required) -->
+            <!-- <xpath expr="//setting[@id='login_documents']" position="replace"></xpath>
+        </field>
+    </record> -->
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.painelnegocios</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Painel de Negócios" string="Painel de Negócios" name="Painel de Negócios" icon="prodemge_painelnegocios,static/description/icon.png">
+                    <block title="Definição da URL de Acesso" id="painelnegocios_url_settings">
+                        <setting>
+                            <div class="content-group">
+                                <div class="oe_title">
+                                    <label class="col-lg-3" string="URL" for="painel_negocios_url"/>
+                                    <field name="painel_negocios_url" placeholder="https://www.prodemge.gov.br" title="Insira a URL de acesso ao painel de negócios"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="painelnegocios_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'prodemge_painelnegocios', 'bin_size': False}</field>
+    </record>
+
+    <!-- <menuitem id="menu_website_global_configuration" parent="menu_website_configuration"
+        sequence="100" name="Configuration" groups="base.group_system"/> -->
+
+    <!-- <menuitem name="Settings"
+        id="menu_painelnegocios_settings"
+        action="painelnegocios_config_settings_action"
+        web_icon="prodemge_painelnegocios,static/description/icon.png"
+        groups="base.group_system"
+        sequence="10"/> -->
+        <!-- parent="menu_painelnegocios_global_configuration" -->
+
+    <!-- <menuitem id="menu_website_add_features" parent="website.menu_website_global_configuration"
+        sequence="20" groups="base.group_system" action="action_website_add_features"/> -->
+
+    <!-- <menuitem name="Websites"
+        id="menu_website_websites_list"
+        action="action_website_list"
+        parent="menu_website_global_configuration"
+        groups="base.group_no_one"
+        sequence="10"
+        /> -->
+
+    <!-- <menuitem name="Menus"
+        id="menu_website_menu_list"
+        action="action_website_menu"
+        parent="menu_website_global_configuration"
+        sequence="45"
+        groups="base.group_no_one"/> -->
+
+</odoo>
