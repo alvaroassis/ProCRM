@@ -6,14 +6,11 @@ from odoo import api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
 
-# from werkzeug import urls
-
-
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     painel_negocios_url = fields.Char(
-        'URL do Painel de Negócios',
-        default="https://www.prodemge.gov.br",
-        help="Insira a URL de acesso ao painel de indicadores de negócios",
-        readonly=False, store=True)
+        string='URL do Painel de Negócios',
+        config_parameter='prodemge_painelnegocios.painel_negocios_url',
+        default='https://www.prodemge.gov.br',
+        readonly=False)

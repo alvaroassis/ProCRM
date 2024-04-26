@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Top menu item -->
+        <!-- Declaração do menu -->
+        <menuitem
+            id="menu_painel"
+            name="Painel de Negócios"
+            web_icon="prodemge_painelnegocios,static/description/icon.png"
+            sequence="300"
+            />
+            <!-- Item de menu para acessar a ação -->
+            <menuitem
+                id="menu_open_url"
+                name="Painel"
+                parent="menu_painel"
+                action="prodemge_painelnegocios.action_open_iframe_painel"
+                sequence="01"
+            />
+            <menuitem
+                id="menu_painel_config"
+                name="Configurações"
+                parent="menu_painel"
+                sequence="10"
+            />
+                <menuitem
+                    id="menu_painel_config_settings"
+                    name="Definições"
+                    parent="menu_painel_config"
+                    action="prodemge_painelnegocios.painel_config_settings_action"
+                    sequence="01"
+                />
+   
+    </data>
+</odoo>

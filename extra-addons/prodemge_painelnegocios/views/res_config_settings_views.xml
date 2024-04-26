@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- id="painelnegocios_url_settings" -->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.painelnegocios</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="100"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Painel de Negócios" string="Painel de Negócios" name="prodemge_painelnegocios" >
+                    <block title="Definição da URL de Acesso">
+                        <!-- <setting> -->
+                            <!-- <div class="content-group"> -->
+                                <div class="oe_title">
+                                    <label class="col-lg-3" string="URL" for="painel_negocios_url"/>
+                                    <field name="painel_negocios_url" placeholder="https://www.exemplo.com" title="Insira a URL de acesso ao painel de negócios"/>
+                                    <div class="text-muted">
+                                        Insira a URL que será utilizada para acessar o Painel
+                                    </div>
+                                </div>
+                            <!-- </div> -->
+                        <!-- </setting> -->
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="painel_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'prodemge_painelnegocios', 'bin_size': False}</field>
+    </record>
+
+</odoo>
