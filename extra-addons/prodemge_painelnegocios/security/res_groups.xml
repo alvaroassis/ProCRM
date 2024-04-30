@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record model="ir.module.category" id="categoria_painel_negocios">
+            <field name="name">Painel de Negócios</field>
+            <field name="description">Gerenciamento das permissões de acesso ao Painel de Negócios da Prodemge.</field>
+            <field name="sequence">13</field>
+        </record>
+        
+        <record id="painelnegocios_user" model="res.groups">
+            <field name="name">Acessar Painel</field>
+            <field name="comment">Permissão de acessar o Painel de Negócios da Prodemge.</field>
+            <field name="category_id" ref="categoria_painel_negocios"/>
+            <!-- <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> -->
+        </record>
+        
+        <record id="painelnegocios_manager" model="res.groups">
+            <field name="name">Administrar Painel</field>
+            <field name="comment">Permissão de administrar o Painel de Negócios da Prodemge.</field>
+            <field name="category_id" ref="categoria_painel_negocios"/>
+            <!-- <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> -->
+        </record>
+
+</odoo>

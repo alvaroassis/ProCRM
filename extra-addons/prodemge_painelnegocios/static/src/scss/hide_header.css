@@ -1,0 +1,21 @@
+html.painel_negocios_form, body.painel_negocios_form, .o_web_client.painel_negocios_form, .o_main.painel_negocios_form,
+ .o_main_content.painel_negocios_form, .o_action_manager.painel_negocios_form, .o_content.painel_negocios_form, .o_form_view.painel_negocios_form,
+ .o_form_renderer.painel_negocios_form {
+    height: 100% !important;
+    overflow: auto;
+}
+.o_form_view.painel_negocios_form .o_control_panel {
+    display: none !important;
+}
+
+.o_form_view.painel_negocios_form .o_content {
+    height: 100% !important;
+    width: 100% !important;
+    border: none;
+    margin: 0;
+    overflow: hidden;
+}
+
+.o_form_view.painel_negocios_form .o_form_renderer {
+    height: 100% !important;
+}

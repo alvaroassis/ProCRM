@@ -8,25 +8,24 @@
     'author': 'Alvaro de Assis Silveira',
     'company': 'Prodemge',
     'maintainer': 'Prodemge',
-    # 'icon': 'prodemge_painelnegocios,static/description/icon.png',
     'website': 'https://prodemge.gov.br',
     'depends': ['base'],
     'data': [
     #     'security/ir.model.access.csv',
+        'security/res_groups.xml',
         'views/res_config_settings_views.xml',
-        'views/painelnegocios_menu.xml',
+        'templates/painel.xml',
         'views/painelnegocios_load.xml',
-    #     'views/dashboard_menu_view.xml',
-    #     'views/dynamic_block_view.xml',
+        'views/painelnegocios_menu.xml',
+
     ],
-    # 'assets': {
-    #     'web.assets_backend': [
-    #         'odoo_dynamic_dashboard/static/src/js/**/*.js',
-    #         'odoo_dynamic_dashboard/static/src/scss/**/*.scss',
-    #         'odoo_dynamic_dashboard/static/src/xml/**/*.xml',
-    #     ],
-    # },
-    # 'images': ['static/description/banner.png'],
+    'assets': {
+        'web.assets_backend': [
+           'prodemge_painelnegocios/static/src/scss/hide_header.css',
+
+        ],
+    },
+
     'license': "AGPL-3",
     'installable': True,
     'auto_install': True,

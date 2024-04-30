@@ -1,60 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
+        
         <record id="view_painelnegocios_url" model="ir.ui.view">
             <field name="name">painelnegocios.acesso</field>
             <field name="model">ir.ui.view</field>
             <field name="arch" type="xml">
-                <form string="External URL">
-                    <iframe src="https://www.prodemge.gov.br" width="100%" height="720"/>
+                <form string="External URL" class="painel_negocios_form">
+                    <iframe src="/painel_negocios"
+                        width="100%" height="100%"
+                        marginwidth="0" marginheight="0"
+                        frameborder="no" scrolling="no"
+                        style="border-width:0px; "/>
                 </form>
             </field>
         </record>
 
         <record id="action_open_iframe_painel" model="ir.actions.act_window">
             <field name="name">Abrir Painel</field>
-            <field name="res_model">ir.ui.view</field>
+            <field name="res_model">ir.actions.act_window</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="prodemge_painelnegocios.view_painelnegocios_url"/>
         </record>
-
-
-                        <!-- Ação para abrir a URL -->
-        <!-- <record id="action_open_url" model="ir.actions.act_url">
-            <field name="name">Abrir URL</field>
-            <field name="url" eval="env['res.config.settings'].search([])[0].painel_negocios_url"/>
-            <field name="target">new</field>
-        </record> -->
-        
-        <!-- <record id="view_painelnegocios_url" model="ir.actions.act_url">
-            <field name="name">painelnegocios.acesso</field>
-            <field name="type">ir.actions.act_url</field>
-            <field name="url">https://www.prodemge.gov.br</field>
-            <field name="target">self</field>
-        </record> -->
-     <!-- Ações para abrir as visualizações de formulário -->
-        <!-- <record id="action_painel_form" model="ir.actions.act_window">
-            <field name="name">Editar URL</field>
-            <field name="res_model">painel.painel</field>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="view_painel_form"/>
-        </record> -->
-
-        <!-- <record id="action_painel_url" model="ir.actions.act_window">
-            <field name="name">Carregar URL</field>
-            <field name="res_model">res.config.settings</field>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="view_painelnegocios_url"/>
-        </record> -->
-
-        
-    <!-- <record id="painelnegocios_menu_action" model="ir.actions.act_window">
-        <field name="name">Painel de Negócios</field>
-    </record> -->
-    <!-- <field name="view_mode">tree,form</field> -->
-    <!-- <field name="res_model">estate.property</field> -->
-    <!-- <field name="view_mode">tree,form,kanban</field> -->
-
+                
     </data>
 </odoo>
