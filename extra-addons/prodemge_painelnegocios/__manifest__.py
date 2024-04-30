@@ -1,6 +1,6 @@
 {
     'name': "Painel de Negócios Prodemge",
-    'version': '0.1',
+    'version': '1.0',
     'category': 'Tools/UI',
     'summary': """Módulo de Acesso a Painel de BI""",
     'description': """Módulo que habilita o acesso ao Painel de Indicadores 
