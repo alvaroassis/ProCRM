@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record model="ir.module.category" id="categoria_intranet_prodemge">
+            <field name="name">Intranet Prodemge</field>
+            <field name="description">Gerenciamento das permissões de acesso a Intranet da Prodemge.</field>
+            <field name="sequence">12</field>
+        </record>
+        
+        <record id="intranet_user" model="res.groups">
+            <field name="name">Acessar a Intranet</field>
+            <field name="comment">Permissão de acessar a Intranet da Prodemge.</field>
+            <field name="category_id" ref="categoria_intranet_prodemge"/>
+            <!-- <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> -->
+        </record>
+        
+        <record id="intranet_manager" model="res.groups">
+            <field name="name">Administrar a Intranet</field>
+            <field name="comment">Permissão de administrar a Configuração de acesso a Intranet da Prodemge.</field>
+            <field name="category_id" ref="categoria_intranet_prodemge"/>
+            <!-- <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> -->
+        </record>
+
+</odoo>

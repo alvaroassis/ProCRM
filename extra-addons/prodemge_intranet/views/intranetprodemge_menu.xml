@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       
+        <!-- Top menu item -->
+        <!-- Declaração do menu -->
+        <menuitem
+            id="menu_intranet"
+            name="Intranet Prodemge"
+            web_icon="prodemge_intranet,static/description/icon.png"
+            groups="intranet_manager,intranet_user"
+            sequence="01"
+            />
+            <!-- Item de menu para acessar a ação -->
+            <menuitem
+                id="menu_open_url"
+                name="Intranet"
+                parent="menu_intranet"
+                action="prodemge_intranet.action_open_iframe_intranet"
+                groups="intranet_manager,intranet_user"
+                sequence="01"
+            />
+            <menuitem
+                id="menu_intranet_config"
+                name="Configurações"
+                parent="menu_intranet"
+                groups="intranet_manager"
+                sequence="10"
+            />
+            <menuitem
+                    id="menu_intranet_config_settings"
+                    name="Definições"
+                    parent="menu_intranet_config"
+                    action="prodemge_intranet.intranet_config_settings_action"
+                    groups="intranet_manager"
+                    sequence="01"
+                />
+   
+    </data>
+</odoo>

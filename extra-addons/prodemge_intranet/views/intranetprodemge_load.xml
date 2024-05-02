@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="view_intranetprodemge_url" model="ir.ui.view">
+            <field name="name">intranetprodemge.acesso</field>
+            <field name="model">ir.ui.view</field>
+            <field name="arch" type="xml">
+                <form string="External URL" class="intranet_prodemge_form">
+                    <iframe src="/intranet"
+                        width="100%" height="100%"
+                        marginwidth="0" marginheight="0"
+                        frameborder="no" scrolling="no"
+                        style="border-width:0px; "/>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_open_iframe_intranet" model="ir.actions.act_window">
+            <field name="name">Abrir Intranet</field>
+            <field name="res_model">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="prodemge_intranet.view_intranetprodemge_url"/>
+        </record>
+                
+    </data>
+</odoo>
