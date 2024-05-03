@@ -7,6 +7,7 @@
             <field name="model">ir.ui.view</field>
             <field name="arch" type="xml">
                 <form string="External URL" class="painel_negocios_form">
+                    <t groups="prodemge_painelnegocios.painelnegocios_user"></t>
                     <iframe src="/painel_negocios"
                         width="100%" height="100%"
                         marginwidth="0" marginheight="0"
