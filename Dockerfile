@@ -113,6 +113,7 @@ COPY ./requirements.txt /opt/odoo
 
 RUN useradd -m odoo && echo odoo:odoo | chpasswd
 RUN pip3 install wheel psycopg2-binary
+RUN pip3 install sqlparse
 RUN pip3 install -r /opt/odoo/requirements.txt
 RUN cp /opt/odoo/setup/odoo /opt/odoo/odoo-bin && chmod +x /opt/odoo/odoo-bin
 
