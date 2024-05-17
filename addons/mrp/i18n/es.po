@@ -35,8 +35,8 @@ msgid ""
 " * Cancelled: The MO has been cancelled, can't be confirmed anymore."
 msgstr ""
 "* Borrador: la orden de fabricación aún no está confirmada.\n"
-"* Confirmada: la orden de fabricación está confirmada, las reglas de existencias y el reabastecimiento de los componentes se activan.\n"
-"* En curso: la producción comenzó (en la orden de fabricación o en la orden de trabajo).\n"
+"* Confirmado: la orden de fabricación está confirmada, las reglas de existencias y el reabastecimiento de los componentes se activan.\n"
+"* En progreso: la producción comenzó (en la orden de fabricación o en la orden de trabajo).\n"
 "* A cerrar: la producción terminó, se debe cerrar la orden de fabricación.\n"
 "* Listo: se cerró la orden de fabricación, los movimientos de existencias se registran.\n"
 "* Cancelado: se canceló la orden de fabricación, ya no se puede confirmar."
@@ -805,6 +805,11 @@ msgid "Archived"
 msgstr "Archivado"
 
 #. module: mrp
+#: model_terms:ir.ui.view,arch_db:mrp.mrp_production_form_view
+msgid "Are you sure you want to cancel this manufacturing order?"
+msgstr "¿Está seguro de que desea cancelar esta orden de fabricación? "
+
+#. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.report_mrporder
 msgid "Assembling"
 msgstr "Montaje"
@@ -1446,7 +1451,7 @@ msgstr "Estado del componente"
 #: code:addons/mrp/static/src/mrp_forecasted/forecasted_details.xml:0
 #, python-format
 msgid "Component of Draft MO"
-msgstr "Unidades necesarias para producto actual"
+msgstr "Componentes necesarios para la orden de fabricación en borrador"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_production__move_raw_ids
@@ -4939,7 +4944,7 @@ msgstr "Planifique antes las órdenes de fabricación para evitar retrasos"
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_form_view
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_workorder_form_view_inherit
 msgid "Scheduled Date"
-msgstr "Fecha prevista"
+msgstr "Fecha programada"
 
 #. module: mrp
 #. odoo-python
@@ -5223,16 +5228,6 @@ msgid ""
 msgstr ""
 "Algunos de sus componentes están rastreados, debe especificar una orden de "
 "fabricación para recuperar los componentes correctos."
-
-#. module: mrp
-#: model_terms:ir.ui.view,arch_db:mrp.mrp_production_form_view
-msgid ""
-"Some product moves have already been confirmed, this manufacturing order "
-"can't be completely cancelled. Are you still sure you want to process?"
-msgstr ""
-"Algunos movimientos de productos ya se han confirmado, esta orden de "
-"fabricación no se puede cancelar por completo. ¿Todavía está seguro de que "
-"quiere procesar?"
 
 #. module: mrp
 #. odoo-python
